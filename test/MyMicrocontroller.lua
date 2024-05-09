@@ -48,10 +48,14 @@ end
 ticks = 0
 function onTick()
     ticks = ticks + 1
+    sec = math.floor(ticks / 60)
 end
 
 function onDraw()
+    h = screen.getHeight()
+    w = screen.getWidth()
     screen.drawCircle(16,16,5)
+    screen.drawText(h/2,w/2,sec)
 end
 
 

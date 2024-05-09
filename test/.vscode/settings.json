@@ -3,7 +3,8 @@
     "lifeboatapi.stormworks.isAddonProject": false,
     "Lua.diagnostics.disable": [
         "lowercase-global",
-        "undefined-doc-name"
+        "undefined-doc-name",
+        "param-type-mismatch"
     ],
     "Lua.diagnostics.globals": [
         "__simulator",
@@ -37,10 +38,10 @@
     ],
     "Lua.runtime.pathStrict": true,
     "Lua.workspace.library": [
-        "/home/shimonotuke1535/Desktop/works/StormworksLuaScripts/test/",
-        "/home/shimonotuke1535/.vscode/extensions/nameouschangey.lifeboatapi-0.0.33/assets/lua/Common/",
-        "/home/shimonotuke1535/.vscode/extensions/nameouschangey.lifeboatapi-0.0.33/assets/lua/Microcontroller/",
-        "/home/shimonotuke1535/Desktop/works/StormworksLuaScripts/test/_build/libs/"
+        "c:/Users/dosuk/works/StormworksLuaScripts/test/",
+        "c:/Users/dosuk/.vscode/extensions/nameouschangey.lifeboatapi-0.0.33/assets/lua/Common/",
+        "c:/Users/dosuk/.vscode/extensions/nameouschangey.lifeboatapi-0.0.33/assets/lua/Microcontroller/",
+        "c:/Users/dosuk/works/StormworksLuaScripts/test/_build/libs/"
     ],
     "lifeboatapi.stormworks.libs.gitLibraries": [
         {
