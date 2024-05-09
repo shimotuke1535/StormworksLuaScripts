@@ -1,6 +1,10 @@
 {
 	"folders": [
 		{
+			"name": "LessorGreater",
+			"path": "LessorGreater"
+		},
+		{
 			"name": "Radersystem",
 			"path": "Radersystem"
 		},
