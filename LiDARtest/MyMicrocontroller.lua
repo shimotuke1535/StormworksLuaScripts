@@ -56,15 +56,15 @@ Point = {
         }
     end
 };
-point = {}
+--point = {}
 t = 0
 function onTick()
     rng = input.getNumber(1)
     dig = math.rad(input.getNumber(2) * 360)
     index = 2.5
-    point[t] = Point.new()
-    point[t].x = (rng/index) * math.sin(dig)
-    point[t].y = (rng/index) * math.cos(dig)
+    --point[t] = Point.new()
+    Point.x = (rng/index) * math.sin(dig)
+    Point.y = (rng/index) * math.cos(dig)
     Rx = w * math.sin(dig)
     Ry = w * math.cos(dig)
     t = t + 1
@@ -87,8 +87,8 @@ function onDraw()
 		screen.drawCircle(x0,y0,i)
 	end
 	screen.setColor(255,0,0)
-	screen.drawText(x0,y0+6,point[t].x)
-	screen.drawText(x0,y0+12,point[t].y)
-	screen.drawCircleF(point[t].x,point[t].y,2)
+	screen.drawText(x0,y0+6,Point.x)
+	screen.drawText(x0,y0+12,Point.y)
+	screen.drawCircleF(Point.x,Point.y,2)
 end
 
