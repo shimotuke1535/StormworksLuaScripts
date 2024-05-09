@@ -48,7 +48,7 @@ end
 ticks = 0
 function onTick()
     ticks = ticks + 1
-    sec = math.floor(ticks / 60)
+    sec = math.ceil(ticks / 60)
 end
 function onDraw()
     h = screen.getHeight()
@@ -56,6 +56,6 @@ function onDraw()
     screen.drawCircle(16,16,5)
     screen.drawText(h/2,w/2,sec)
 end
-
+--このプログラム内で10秒経過するのに現実計測で約14秒かかった。このずれは結構めんどくさいかもしれんが…実際の環境でどのように変わるかは未検証
 
 
