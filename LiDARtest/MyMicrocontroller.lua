@@ -31,10 +31,10 @@ do
 
         -- NEW! button/slider options from the UI
         simulator:setInputBool(31, simulator:getIsClicked(1))       -- if button 1 is clicked, provide an ON pulse for input.getBool(31)
-        simulator:setInputNumber(31, simulator:getSlider(1))        -- set input 31 to the value of slider 1
+        simulator:setInputNumber(1, simulator:getSlider(1)*250)        -- set input 1 to the value of slider 1
+        simulator:setInputNumber(2, simulator:getSlider(2)/2 - 0.25)
 
         simulator:setInputBool(32, simulator:getIsToggled(2))       -- make button 2 a toggle, for input.getBool(32)
-        simulator:setInputNumber(32, simulator:getSlider(2) * 50)   -- set input 32 to the value from slider 2 * 50
     end;
 end
 ---@endsection
@@ -56,22 +56,30 @@ Point = {
         }
     end
 };
---point = {}
-t = 0
+point = {}
+ticks = 0
 function onTick()
 	x0 = w / 2
 	y0 = h - h / 6
     rng = input.getNumber(1)
     dig = math.rad(input.getNumber(2) * 360)
     index = 2.5
-    --point[t] = Point.new()
-    Point.x = x0 - (rng/index) * math.sin(dig)
-    Point.y = y0 - (rng/index) * math.cos(dig)
+    for i = 1, 120, 1
+    do
+        point[i] = Point.new()
+        point[i].x = x0 - (rng/index) * math.sin(dig)
+        point[i].y = y0 - (rng/index) * math.cos(dig)
+    end 
     Rx = w * math.sin(dig)
     Ry = w * math.cos(dig)
-    t = t + 1
-    if t >= 120 then
-        t=0
+    ticks = ticks + 1
+    if ticks == 120 then
+        ticks=0
+        for i=0 , 120, 1
+        do
+            point[i].x = 0
+            point[i].y = 0
+        end
     end
 end
 
@@ -87,7 +95,8 @@ function onDraw()
 		screen.drawCircle(x0,y0,i)
 	end
 	screen.setColor(255,0,0)
-	screen.drawText(x0,y0+6,Point.x)
-	screen.drawText(x0,y0+12,Point.y)
-	screen.drawCircleF(Point.x,Point.y,2)
+	screen.drawText(x0,y0,point[ticks].x)
+	screen.drawText(x0,y0+6,point[ticks].y)
+    screen.drawText(x0,y0+12,ticks)
+	screen.drawCircleF(point[ticks].x,point[ticks].y,2)
 end
