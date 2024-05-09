@@ -76,7 +76,7 @@ function onDraw()
     w = screen.getWidth()
 	h = screen.getHeight()
 	x0 = w / 2
-	y0 = h - h / 6					
+	y0 = h - h / 6
 	screen.setColor(0,255,0)
 	screen.drawLine(0,y0,w,y0)
 	screen.drawLine(x0,0,x0,h)
