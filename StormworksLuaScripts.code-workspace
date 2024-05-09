@@ -1,6 +1,18 @@
 {
 	"folders": [
 		{
+			"name": "Radersystem",
+			"path": "Radersystem"
+		},
+		{
+			"name": "LiDARtest",
+			"path": "LiDARtest"
+		},
+		{
+			"name": "timetest",
+			"path": "timetest"
+		},
+		{
 			"name": "test",
 			"path": "test"
 		},
