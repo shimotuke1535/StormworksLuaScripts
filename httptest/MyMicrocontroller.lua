@@ -48,7 +48,7 @@ end
 ticks = 0
 function onTick()
     ticks = ticks + 1
-     async.httpGet(80, "192.168.0.19:8000")
+     async.httpGet(80, "localhost:8000")
 end
 
 function onDraw()
