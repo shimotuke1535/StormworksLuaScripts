@@ -57,27 +57,43 @@ Point = {
     end
 };
 point = {}
-t = 0
+sec = 0
+ticks = 0
 function onTick()
+	x0 = w / 2
+	y0 = h - h / 6
     rng = input.getNumber(1)
     dig = math.rad(input.getNumber(2) * 360)
     index = 2.5
-    point[t] = Point.new()
-    point[t].x = (rng/index) * math.sin(dig)
-    point[t].y = (rng/index) * math.cos(dig)
+    for i = 0, 140, 1
+    do
+        point[i] = Point.new()
+        point[i].x = 0
+        point[i].y = 0
+    end 
+    for i = 0, 120, 1
+    do
+        point[i].x = x0 - (rng/index) * math.sin(dig)
+        point[i].y = y0 - (rng/index) * math.cos(dig)
+    end
     Rx = w * math.sin(dig)
     Ry = w * math.cos(dig)
-    t = t + 1
-    if t >= 120 then
-        t=0
+    ticks = ticks + 1
+    sec = math.ceil(ticks / 60)
+    if sec > 2 then
+        ticks=0
+        for i=0 , 120, 1
+        do
+            point[i].x = 0
+            point[i].y = 0
+        end
     end
+    i = 0
 end
 
 function onDraw()
     w = screen.getWidth()
 	h = screen.getHeight()
-	x0 = w / 2
-	y0 = h - h / 6
 	screen.setColor(0,255,0)
 	screen.drawLine(0,y0,w,y0)
 	screen.drawLine(x0,0,x0,h)
@@ -87,8 +103,11 @@ function onDraw()
 		screen.drawCircle(x0,y0,i)
 	end
 	screen.setColor(255,0,0)
-	screen.drawText(x0,y0+6,point[t].x)
-	screen.drawText(x0,y0+12,point[t].y)
-	screen.drawCircleF(point[t].x,point[t].y,2)
+	screen.drawText(x0,y0,point[ticks].x)
+	screen.drawText(x0,y0+6,point[ticks].y)
+    screen.drawText(x0,y0+12,sec)
+    for i = 0, 120, 1
+    do
+        screen.drawCircleF(point[ticks].x,point[ticks].y,2)
+    end
 end
-
