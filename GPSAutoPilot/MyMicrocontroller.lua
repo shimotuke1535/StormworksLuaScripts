@@ -47,7 +47,6 @@ end
 
 tick = 0
 Target_value = 0.0
---???W???u?i?[?e?[?u?????`
 Target = 
 {
     new = function()
@@ -58,7 +57,6 @@ Target =
         }
     end
 }
---???????u?E?????i?[?e?[?u?????`
 Current = 
 {
     new = function()
@@ -71,7 +69,6 @@ Current =
         }
     end
 }
---???????u?E?????i?[?e?[?u??
 dif = 
 {
     new = function()
@@ -83,7 +80,6 @@ dif =
         }
     end
 }
---PID?R???g???[???[
 function PID_controller(Kp, Ki, Kd, C_value, PreC_value, T)
     Controll_value = 0.0
     e = 0 - C_value
@@ -93,36 +89,26 @@ function PID_controller(Kp, Ki, Kd, C_value, PreC_value, T)
     return Controll_value
 end
 function ontick()
-    --???????`
     distance = 0.0
     pre_distance = 0.0
     direction = 0.0
     pre_direction = 0.0
     throtlle = 0.0
     Ladder = 0.0
-    --???W???u????
     Target = Target.new()
     Target.x = input.getNumber(1)
     Target.y = input.getNumber(2)
-    --???????u?E????????
     Current = Current.new()
     Current.x = input.getNumber(3)
     Current.y = input.getNumber(4)
     Current.dir = input.getNumber(5)
-    --???????u?E?????v?Z
     diff = dif.new()
     diff.x = Target.x - Current.x
     diff.y = Target.y - Current.y
     diff.dir = math.atan(diff.y, diff.x) - Current.dir
-    --PID?Åò??
     throtlle = PID_controller(1, 0, 1, distance, pre_distance, tick)
     Ladder  = PID_controller(1, 0, 1, direction, pre_direction, tick)
-    --?o??
     output.setNumber(10, throtlle)
     output.setNumber(11, Ladder)
-    --tick???Z
     tick = tick + 1
 end
-
-
-
