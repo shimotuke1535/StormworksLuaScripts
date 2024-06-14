@@ -115,17 +115,13 @@ function ontick()
     diff.y = Target.y - Current.y
     diff.dir = math.atan(diff.y, diff.x) - Current.dir
     --PIDêßå‰
-    throtlle = PID_controller(1, 1, 1, distance, pre_distance, tick)
-    Ladder  = PID_controller(1, 1, 1, direction, pre_direction, tick)
+    throtlle = PID_controller(1, 0, 1, distance, pre_distance, tick)
+    Ladder  = PID_controller(1, 0, 1, direction, pre_direction, tick)
     --èoóÕ
     output.setNumber(10, throtlle)
     output.setNumber(11, Ladder)
     --tickâ¡éZ
     tick = tick + 1
-end
-
-function onDraw()
-    
 end
 
 
