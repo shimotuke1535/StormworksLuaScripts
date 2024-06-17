@@ -83,6 +83,33 @@ function PID_Controller(setpoints,Targetpoints)
 end
 
 function onTick()
+=======
+{
+    new = function()
+        return
+        {
+            x = 0.0,
+            y = 0.0,
+            dir = 0.0
+        }
+    end
+}
+function PID_controller(Kp, Ki, Kd, C_value, PreC_value, T)
+    Controll_value = 0.0
+    e = 0 - C_value
+    de = (e - PreC_value) / T
+    ie = ie + (e - PreC_value) * T/2
+    Controll_value = Kp * e + Ki * ie + Kd * de
+    return Controll_value
+end
+function ontick()
+    distance = 0.0
+    pre_distance = 0.0
+    direction = 0.0
+    pre_direction = 0.0
+    throtlle = 0.0
+    Ladder = 0.0
+>>>>>>> 56936e2de863bce6485285421adee6b70e7dc522
     Target = Target.new()
     Target.x = input.getNumber(1)
     Target.y = input.getNumber(2)
