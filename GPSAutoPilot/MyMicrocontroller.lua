@@ -79,15 +79,17 @@ dif =
             }
         end
     }
+function PID_Controller(setpoints,Targetpoints)
+end
 
 function onTick()
     Target = Target.new()
-    Target.x = input.getNumber
-    io.write(Target.y)
+    Target.x = input.getNumber(1)
+    Target.y = input.getNumber(2)
     Current = Current.new()
-    io.write(Current.x)
-    io.write(Current.y)
-    io.write(Current.dir)
+    Current.x = input.getNumber(3)
+    Current.y = input.getNumber(4)
+    Current.dir = input.getNumber(5)
     diff = dif.new()
     diff.x = Target.x - Current.x
     diff.y = Target.y - Current.y
