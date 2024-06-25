@@ -89,10 +89,10 @@ function PID_controller(Kp, Ki, Kd, C_value, PreC_value, T)
     return Controll_value
 end
 function ontick()
-    distance = 0.0
-    pre_distance = 0.0
-    direction = 0.0
-    pre_direction = 0.0
+    dist = 0.0
+    pre_dist = 0.0
+    dir = 0.0
+    pre_dir = 0.0
     throtlle = 0.0
     Ladder = 0.0
     Target = Target.new()
@@ -101,13 +101,13 @@ function ontick()
     Current = Current.new()
     Current.x = input.getNumber(3)
     Current.y = input.getNumber(4)
-    Current.dir = input.getNumber(5)
+    Current.dir = input.getNumber(5) * (2 * math.pi)
     diff = dif.new()
     diff.x = Target.x - Current.x
     diff.y = Target.y - Current.y
     diff.dir = math.atan(diff.y, diff.x) - Current.dir
-    throtlle = PID_controller(1, 0, 1, distance, pre_distance, tick)
-    Ladder  = PID_controller(1, 0, 1, direction, pre_direction, tick)
+    throtlle = PID_controller(1, 0, 1, dist, pre_dist, tick)
+    Ladder  = PID_controller(1, 0, 1, diff.dir, pre_direction, tick)
     output.setNumber(10, throtlle)
     output.setNumber(11, Ladder)
     tick = tick + 1
