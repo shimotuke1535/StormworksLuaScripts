@@ -45,41 +45,41 @@ end
 -- try require("Folder.Filename") to include code from another file in this, so you can store code in libraries
 -- the "LifeBoatAPI" is included by default in /_build/libs/ - you can use require("LifeBoatAPI") to get this, and use all the LifeBoatAPI.<functions>!
 
-tick = 0
-Target_value = 0.0
+ticks = 0
 Target = 
-{
-    new = function()
-        return
-        {
-            x = 0.0,
-            y = 0.0
-        }
-    end
-}
+    {
+        new = function()
+            return
+            {
+                x = 0.0,
+                y = 0.0
+            }
+        end
+    }
 Current = 
-{
-    new = function()
-        
-        return
-        {
-            x = 0.0,
-            y = 0.0,
-            dir = 0.0
-        }
-    end
-}
+    {
+        new = function()
+            
+            return
+            {
+                x = 0.0,
+                y = 0.0,
+                dir = 0.0
+            }
+        end
+    }
 dif = 
-{
-    new = function()
-        return
-        {
-            x = 0.0,
-            y = 0.0,
-            dir = 0.0
-        }
-    end
-}
+    {
+        new = function()
+            return
+            {
+                x = 0.0,
+                y = 0.0,
+                dir = 0.0
+            }
+        end
+    }
+
 function PID_controller(Kp, Ki, Kd, C_value, PreC_value, T)
     Controll_value = 0.0
     e = 0 - C_value
@@ -112,3 +112,5 @@ function ontick()
     output.setNumber(11, Ladder)
     tick = tick + 1
 end
+
+
